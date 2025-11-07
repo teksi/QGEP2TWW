@@ -50,29 +50,6 @@ SELECT ws.obj_id
             AND wt.obj_id IS NULL 
             AND ch.obj_id IS NULL ;
 
-
-
-SELECT ws.obj_id
-
-   FROM qgep_od.wastewater_structure ws
-     LEFT JOIN qgep_od.cover main_co ON main_co.obj_id::text = ws.fk_main_cover::text
-     LEFT JOIN qgep_od.structure_part main_co_sp ON main_co_sp.obj_id::text = ws.fk_main_cover::text
-     LEFT JOIN qgep_od.manhole ma ON ma.obj_id::text = ws.obj_id::text
-     LEFT JOIN qgep_od.special_structure ss ON ss.obj_id::text = ws.obj_id::text
-     LEFT JOIN qgep_od.discharge_point dp ON dp.obj_id::text = ws.obj_id::text
-     LEFT JOIN qgep_od.infiltration_installation ii ON ii.obj_id::text = ws.obj_id::text
-     LEFT JOIN qgep_od.wwtp_structure wt ON wt.obj_id::text = ws.obj_id::text
-     LEFT JOIN qgep_od.wastewater_networkelement ne ON ne.obj_id::text = ws.fk_main_wastewater_node::text
-     LEFT JOIN qgep_od.wastewater_node wn ON wn.obj_id::text = ws.fk_main_wastewater_node::text
-     LEFT JOIN qgep_od.channel ch ON ch.obj_id::text = ws.obj_id::text
-            WHERE ma.obj_id IS NULL
-            AND ss.obj_id IS NULL 
-            AND dp.obj_id IS NULL 
-            AND ii.obj_id IS NULL 
-            AND wt.obj_id IS NULL 
-            AND ch.obj_id IS NULL ;
-
-
 -- Remove unrelated wastewater strucures
 DELETE FROM qgep_od.vw_qgep_wastewater_structure ws WHERE ws.obj_id = 'ch176dc9WS018283';
 DELETE FROM qgep_od.vw_qgep_wastewater_structure ws WHERE ws.obj_id = 'ch176dc9WS018681';
