@@ -281,10 +281,11 @@ UPDATE qgep_od.reach_point
 SET identifier = obj_id
 where identifier IS NULL OR identifier = '';
 
---
+/* n'est plus nécessaire
 UPDATE qgep_od.vw_qgep_wastewater_structure
 SET fk_owner = '3'
 where identifier IS NULL OR identifier = '';
+*/
 
 -- Detection des doublons
 
