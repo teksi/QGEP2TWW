@@ -195,7 +195,7 @@ SET identifier = obj_id;
 
 -- Add new column to store original geometries
 ALTER TABLE qgep_od.wastewater_networkelement 
-ADD COLUMN pully_identifier varchar(60);
+ADD COLUMN pully_identifier varchar(100);
 
 -- Copy old geometries to new column
 UPDATE qgep_od.wastewater_networkelement 
@@ -209,7 +209,7 @@ SET identifier = obj_id;
 ---- structure parts
 -- Add new column to store original geometries
 ALTER TABLE qgep_od.structure_part 
-ADD COLUMN pully_identifier varchar(60);
+ADD COLUMN pully_identifier varchar(100);
 
 -- Copy old geometries to new column
 UPDATE qgep_od.structure_part 
