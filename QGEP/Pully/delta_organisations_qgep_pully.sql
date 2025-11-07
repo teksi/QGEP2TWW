@@ -334,6 +334,10 @@ UPDATE qgep_od.wastewater_structure
 SET fk_owner = '3'
 where fk_owner IS NULL;
 
+UPDATE qgep_od.wastewater_structure
+SET fk_operator = '3'
+where fk_operator IS NULL;
+
 -- Update wastewater_structure identifier if too long
 UPDATE qgep_od.wastewater_structure
 SET identifier = obj_id
