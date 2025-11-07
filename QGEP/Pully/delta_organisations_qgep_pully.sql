@@ -179,6 +179,77 @@ DELETE FROM qgep_od.vw_qgep_wastewater_structure ws WHERE ws.obj_id = 'ch176dc9W
 
 SELECT qgep_sys.drop_symbology_triggers() ;
 
+---- wastewaster_structure
+-- Add new column to store original geometries
+ALTER TABLE qgep_od.wastewater_structure 
+ADD COLUMN pully_identifier varchar(60);
+
+-- Copy old geometries to new column
+UPDATE qgep_od.wastewater_structure 
+SET pully_identifier = identifier
+WHERE identifier IS NOT NULL;
+
+-- Set to identifier to obj_id to avoid issues during migration
+UPDATE qgep_od.wastewater_structure 
+SET identifier = obj_id;
+
+-- Add new column to store original geometries
+ALTER TABLE qgep_od.wastewater_networkelement 
+ADD COLUMN pully_identifier varchar(60);
+
+-- Copy old geometries to new column
+UPDATE qgep_od.wastewater_networkelement 
+SET pully_identifier = identifier
+WHERE identifier IS NOT NULL;
+
+-- Set to identifier to obj_id to avoid issues during migration
+UPDATE qgep_od.wastewater_networkelement 
+SET identifier = obj_id;
+
+---- structure parts
+-- Add new column to store original geometries
+ALTER TABLE qgep_od.structure_part 
+ADD COLUMN pully_identifier varchar(60);
+
+-- Copy old geometries to new column
+UPDATE qgep_od.structure_part 
+SET pully_identifier = identifier
+WHERE identifier IS NOT NULL;
+
+-- Set to identifier to obj_id to avoid issues during migration
+UPDATE qgep_od.structure_part 
+SET identifier = obj_id;
+
+---- maintenance events
+-- Add new column to store original geometries
+ALTER TABLE qgep_od.maintenance_event 
+ADD COLUMN pully_identifier varchar(60);
+
+-- Copy old geometries to new column
+UPDATE qgep_od.maintenance_event 
+SET pully_identifier = identifier
+WHERE identifier IS NOT NULL;
+
+-- Set to identifier to obj_id to avoid issues during migration
+UPDATE qgep_od.maintenance_event 
+SET identifier = obj_id;
+
+---- files
+-- Add new column to store original geometries
+ALTER TABLE qgep_od.file 
+ADD COLUMN pully_identifier varchar(60);
+
+-- Copy old geometries to new column
+UPDATE qgep_od.file 
+SET pully_identifier = identifier
+WHERE identifier IS NOT NULL;
+
+-- Set to identifier to obj_id to avoid issues during migration
+UPDATE qgep_od.file 
+SET identifier = obj_id;
+
+/*
+
 UPDATE qgep_od.file
 SET identifier = obj_id
 where identifier IS NULL OR identifier = '';
@@ -198,15 +269,19 @@ where identifier IS NULL OR identifier = '';
 UPDATE qgep_od.structure_part
 SET identifier = obj_id
 where identifier IS NULL OR identifier = '';
+*/
 
+-- Défini l'identifier comme la cle etrangere de la structure liée
 UPDATE qgep_od.reach_point
 SET identifier = fk_wastewater_networkelement
 where identifier IS NULL OR identifier = '';
 
+-- Défini l'identifier comme l'obj_id dans le cas ou l'objet n'est pas lié
 UPDATE qgep_od.reach_point
 SET identifier = obj_id
 where identifier IS NULL OR identifier = '';
 
+--
 UPDATE qgep_od.vw_qgep_wastewater_structure
 SET fk_owner = '3'
 where identifier IS NULL OR identifier = '';
