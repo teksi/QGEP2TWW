@@ -11,6 +11,8 @@ These scripts aims to help to get practical into the migration from QGEP to TEKS
 > It can be smart to concentrate the efforts on upgrading all QGEP databases
 > before trying to migrate and install TWW
 
+It could be useful to handle a separate osgeo4w installation for example in c:\oswgeo4w2 so you don't get t
+
 The migration approach is as following :
  * [Upgrading QGEP](https://github.com/teksi/QGEP2TWW/wiki/Upgrading-QGEP)
    * Create a copy of your production database
@@ -29,8 +31,16 @@ The migration approach is as following :
    * Import organisation data into TWW
    * Import network data into TWW
 
+ * [Project file adaptations](https://github.com/teksi/QGEP2TWW/wiki/Project-file-adaptations)
+   * Start with demo project
+   * Handle translations
+   * Adapt your projects
+   * Tips and tricks on project templating
+
  * [Migrate Adaptations / additional data](https://github.com/teksi/QGEP2TWW/wiki/Dealing-with-customizations)
    * Upgrade 3D geometries (not custom)
    * Add additional custom fields and migrate these
    * Create custom export views and schemas
+
+
 
