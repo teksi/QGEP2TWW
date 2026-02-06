@@ -37,7 +37,7 @@ The migration approach is as following :
    * Adapt your projects
    * Tips and tricks on project templating
 
- * [Migrate Adaptations / additional data](https://github.com/teksi/QGEP2TWW/wiki/Dealing-with-customizations)
+ * [Migrate Identifiers, adaptations / additional data](https://github.com/teksi/QGEP2TWW/wiki/Dealing-with-customizations)
    * Upgrade 3D geometries (not custom)
    * Add additional custom fields and migrate these
    * Create custom export views and schemas
