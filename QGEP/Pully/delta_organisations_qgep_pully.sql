@@ -1,17 +1,21 @@
--- Insert Municipalities
+-- Insert into Municipalities
 INSERT INTO qgep_od.municipality (obj_id)
 VALUES 
-( '1' ),
-( '5' ),
-( '6' ),
-( '7' );
+( '1' ), --public (pully or belmont)
+( '7' ); -- Lausanne ou entente intercommunale
+
+-- Insert into Cantons
+INSERT INTO qgep_od.canton (obj_id)
+VALUES
+( '5' ); -- DGMR - Canton de Vaud
 
 -- Insert Private / unknown
 INSERT INTO qgep_od.private (obj_id)
 VALUES
-( '2' ),
-( '3' ),
-( '4' );
+( '2' ), -- privé ou privé communal
+( '3' ), -- inconnu ou à définir
+( '4' ), -- CFF / SBB ou OFROU / ASTRA
+( '6' ); -- OFROU / ASTRA
 
 -- Insert wastewater associations
 /*INSERT INTO qgep_od.waste_water_association (obj_id)

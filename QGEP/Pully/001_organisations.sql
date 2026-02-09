@@ -1,3 +1,41 @@
+/*
+    This script is used to fix organisations in the QGEP database.
+    Obj_id are added to the subclasses of organisation to avoid integrity check errors during migration.
+    obj_id are converted into a varchar 16 to be compliant with the expected INTERLIS TID format.
+*/
+
+/* TO AVOID 
+ERROR: number of subclass elements of wastewater_structure NOT CORRECT in schema qgep_od: 
+Add missing obj_id in wastewater_structure subclasses so that number of subclass elements match wastewater_structure elements. 
+See qgep logs tab for details.
+*/
+
+/* Expected
+Sucess: OK: Integrity checks organisation
+*/
+
+-- Complete subclasses of organisation with missing obj_id to avoid integrity check errors.
+
+-- Insert into Municipalities
+INSERT INTO qgep_od.municipality (obj_id)
+VALUES 
+( '1' ), --public (pully or belmont)
+( '7' ); -- Lausanne ou entente intercommunale
+
+-- Insert into Cantons
+INSERT INTO qgep_od.canton (obj_id)
+VALUES
+( '5' ); -- DGMR - Canton de Vaud
+
+-- Insert Private / unknown
+INSERT INTO qgep_od.private (obj_id)
+VALUES
+( '2' ), -- privé ou privé communal
+( '3' ), -- inconnu ou à définir
+( '4' ), -- CFF / SBB ou OFROU / ASTRA
+( '6' ); -- OFROU / ASTRA
+
+
 -- Drop constraints
 
 ALTER TABLE IF EXISTS qgep_od.txt_symbol DROP CONSTRAINT rel_txt_symbol_fk_dataowner;
@@ -195,4 +233,35 @@ ALTER TABLE qgep_od.data_media ADD CONSTRAINT rel_od_data_media_fk_dataowner FOR
 ALTER TABLE qgep_od.data_media ADD CONSTRAINT rel_od_data_media_fk_dataprovider FOREIGN KEY (fk_provider) REFERENCES qgep_od.organisation(obj_id) ON UPDATE CASCADE ON DELETE set null;
 ALTER TABLE qgep_od.file ADD CONSTRAINT rel_od_file_fk_dataowner FOREIGN KEY (fk_dataowner) REFERENCES qgep_od.organisation(obj_id) ON UPDATE CASCADE ON DELETE set null;
 ALTER TABLE qgep_od.file ADD CONSTRAINT rel_od_file_fk_dataprovider FOREIGN KEY (fk_provider) REFERENCES qgep_od.organisation(obj_id) ON UPDATE CASCADE ON DELETE set null;
+
+
+-- Fix values for Pully
+
+UPDATE  qgep_od.organisation CASCADE
+SET obj_id = 'ch176dc9OG000001'
+WHERE obj_id = '1';
+
+UPDATE  qgep_od.organisation CASCADE
+SET obj_id = 'ch176dc9OG000002'
+WHERE obj_id = '2';
+
+UPDATE  qgep_od.organisation CASCADE
+SET obj_id = 'ch176dc9OG000003'
+WHERE obj_id = '3';
+
+UPDATE  qgep_od.organisation CASCADE
+SET obj_id = 'ch176dc9OG000004'
+WHERE obj_id = '4';
+
+UPDATE  qgep_od.organisation CASCADE
+SET obj_id = 'ch176dc9OG000005'
+WHERE obj_id = '5';
+
+UPDATE  qgep_od.organisation CASCADE
+SET obj_id = 'ch176dc9OG000006'
+WHERE obj_id = '6';
+
+UPDATE  qgep_od.organisation CASCADE
+SET obj_id = 'ch176dc9OG000007'
+WHERE obj_id = '7';
 
