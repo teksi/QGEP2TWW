@@ -4,6 +4,8 @@
     This is necessary to ensure that the data can be migrated to the new QGEP application without any issues.
 */
 
+SELECT qgep_sys.drop_symbology_triggers() ;
+
 ---- wastewaster_structure
 -- Add new column to store original geometries
 ALTER TABLE qgep_od.wastewater_structure 

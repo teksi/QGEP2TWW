@@ -1,5 +1,7 @@
 -- Execute drop_view.sql (with PGADMIN or PSQL)
 
+DROP SCHEMA IF EXISTS qgep_sigip CASCADE;
+
 -- qgep_swmm views
 DROP VIEW IF EXISTS qgep_swmm.vw_aquifers CASCADE;
 DROP VIEW IF EXISTS qgep_swmm.vw_conduits CASCADE;
@@ -21,6 +23,12 @@ DROP VIEW IF EXISTS qgep_swmm.vw_subcatchments CASCADE;
 DROP VIEW IF EXISTS qgep_swmm.vw_tags CASCADE;
 DROP VIEW IF EXISTS qgep_swmm.vw_vertices CASCADE;
 DROP VIEW IF EXISTS qgep_swmm.vw_xsections CASCADE;
+DROP VIEW IF EXISTS qgep_swmm.link_results CASCADE;
+DROP VIEW IF EXISTS qgep_swmm.node_results CASCADE;
+DROP VIEW IF EXISTS qgep_swmm.vw_curves CASCADE;
+DROP VIEW IF EXISTS qgep_swmm.vw_orifices CASCADE;
+DROP VIEW IF EXISTS qgep_swmm.vw_outlets CASCADE;
+DROP VIEW IF EXISTS qgep_swmm.vw_weirs CASCADE;
 
 -- network views
 DROP MATERIALIZED VIEW IF EXISTS qgep_od.vw_network_segment;

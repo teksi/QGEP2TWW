@@ -14,6 +14,8 @@ WHERE
 
 
 -- List of obj_id with multiple geometries
+
+/*
 ('ch176dc9WN022275',
 'ch176dc9WN022275',
 'ch176dc9WN021365',
@@ -25,6 +27,8 @@ WHERE
 'ch176dc9WS023735',
 'ch176dc9WS024877',
 'ch176dc9WS024878')
+
+*/
 
 /*
     Wastewater structures geometries
@@ -58,7 +62,7 @@ AND dump.path[1] = 1;
 */
 
 UPDATE qgep_od.wastewater_structure ws
-SET detail_geometry_geometry = ST_FORCECURVE(d.geom)::Geometry(CurvePolygonZ,2056)
+SET detail_geometry_geometry = ST_FORCECURVE(selection.geom)::Geometry(CurvePolygonZ,2056)
 FROM (
 	SELECT obj_id, (ST_Dump(ST_CollectionExtract(detail_geometry_geometry_2, 3))).geom
 	FROM qgep_od.wastewater_structure
