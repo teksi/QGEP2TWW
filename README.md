@@ -24,6 +24,8 @@ The migration approach is as following :
    * Create QGEP VSA DSS 2015 Export
 
  * [Conversion of the dataset from 2015->2020.1](https://github.com/teksi/QGEP2TWW/wiki/Converting-2015-2020)
+   * Convert German to French
+   * Checking your 2015 export xtf
    * Using the VSA converter tool
 
  * [Starting with TWW](https://github.com/teksi/QGEP2TWW/wiki/Starting-With-TWW)
